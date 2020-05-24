@@ -1,6 +1,6 @@
 # Nebula
 
-Generate a distribution.json for Helios.
+Generate a distribution.json for BacoLauncher.
 
 ## Requirements
 
@@ -12,14 +12,8 @@ Generate a distribution.json for Helios.
 
 1. Clone the repository
 2. Install the dependencies (`npm i`)
-3. Create a `.env` file at the root directory of the cloned folder and set the required values.
 
-Example
-```properties
-JAVA_EXECUTABLE=C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\bin\java.exe
-ROOT=D:\TestRoot2
-BASE_URL=http://localhost:8080/
-```
+
 
 ## Usage
 
@@ -34,6 +28,74 @@ Rather than updating the entire usage with minor changes, please read these note
 ## Commands
 
 Commands will be documented here. You can run any command with the `--help` option to view more information.
+
+
+### Clone the Repo
+
+To begin, you need to clone the Nebula repository. git clone https://github.com/BacoNetworks/Nebula.git Linux) (Note: if you don’t have git then do apt install git) Windows) (Note: if you don’t have git then install Git Bash) Windows) (Note: if you don’t have git then install Git Bash)
+
+### Install Dependencies and Build Nebula
+
+To install dependencies, you need to execute npm i in the repository’s directory. and to build Nebula, simply execute `npm build ./` and `npm run build` in the same directory.
+
+### Create .env
+
+Windows) Type where java and execute it. Then note the given PATH.
+
+Linux) Execute whereis java and note the given PATH. To make Nebula work properly, you need to create a file that is named .env Once you’ve created it type in this. You will need to fill it.
+
+MacOS) It’s a little bit more difficult, you need to see if any of these paths belongs to your Java installation: PATHS
+
+use something like:
+
+`nano .env` or `vi .env`
+
+```properties
+JAVA_EXECUTABLE=/usr/bin/java
+ROOT=D:\TestRoot2
+BASE_URL=https://baconetworks/BacoLauncher/
+```
+
+
+### Create Server
+
+To create a modded distribution.json (distro.json), you need to create a modded server, to do that: run this command while in the nebula directory: node dist/index.js generate server <ServerName> <MCServerVersion> --forge <ForgeSpecificVersion> (Note: you don’t have to type the brackets <>) (Note x2: if you receive an error try doing npm run build)
+ 
+ examples:
+ //BacoNetworks = Hub
+
+```properties
+node dist/index.js generate server BacoNetworks 1.12.2 --forge 14.23.5.2838
+
+node dist/index.js generate server StoneBlock2 1.12.2 --forge 14.23.5.2846
+
+node dist/index.js generate server SkyFactory4 1.12.2 --forge 14.23.5.2838
+
+node dist/index.js generate server Revelation 1.12.2 --forge 14.23.5.2846
+
+npm run start server BacoNetworks 1.12.2 --forge 14.23.5.2838
+
+npm run start server StoneBlock2 1.12.2 --forge 14.23.5.2846
+
+npm run start server SkyFactory4 1.12.2 --forge 14.23.5.2838
+
+npm run start server Revelation 1.12.2 --forge 14.23.5.2846
+```
+
+### Placing Files
+
+To start putting in your mods, go to servers/<YourServerID>. Go to forgemods, and put in your mods (try to have no special characters in your mods’ name).
+
+Optional: Put your flans mod, in the flans folder and if there is some mods that require folders in the minecraft root directory, put them in there.
+
+Root_of_.env/server/{server_Name}/forgemods
+
+### Create distribution.json
+
+Once you’ve finished all of this, you actually need to create the distribution.json file. Todo so, execute this command while in Nebula’s root directory. generate distro Then you will get your distribution.json ready. You just need to put the new folders that Nebula generated in a webserver at the base url that you’ve specified in the .env.
+
+`npm run start -- generate distro`
+ 
 
 ### Init
 
